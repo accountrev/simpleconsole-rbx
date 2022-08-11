@@ -173,7 +173,7 @@ function lib.new()
         console:Log(line, Color3.fromRGB(0, 255, 0))
     end
 
-    function lib:SetBrand(brandName)
+    function console:SetBrand(brandName)
         brand = brandName
     end
 

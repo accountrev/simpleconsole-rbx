@@ -1,9 +1,12 @@
 -- SimpleConsole pre-release by accountrevived
 
+local UIS = game:GetService("UserInputService")
+
 local lib = {}
 local console = {}
 
 function lib.new()
+    local toggled = false
     local brand = "SimpleConsole"
 
     local SimpleConsole = Instance.new("ScreenGui")
@@ -28,6 +31,7 @@ function lib.new()
     Main.BorderSizePixel = 0
     Main.Position = UDim2.new(0.289392889, 0, 0.783366561, 0)
     Main.Size = UDim2.new(0.566125274, 0, 0.353579074, 0)
+    Main.Visible = false
 
     UICorner.CornerRadius = UDim.new(0, 15)
     UICorner.Parent = Main
@@ -176,6 +180,17 @@ function lib.new()
     function console:SetBrand(brandName)
         brand = brandName
     end
+
+    function console:Toggle()
+        if toggled then
+            Main.Visible = false
+            toggled = false
+        else
+            Main.Visible = true
+            toggled = true
+        end
+    end
+	
 
     return console
 end

@@ -4,6 +4,8 @@ local lib = {}
 local console = {}
 
 function lib.new()
+    local brand = "SimpleConsole"
+
     local SimpleConsole = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
@@ -147,7 +149,7 @@ function lib.new()
 
     function console:Log(line, color)
         local newLine = Line:Clone()
-        newLine.Text = line
+        newLine.Text = "[" .. brand .. " on " .. os.date("*t").hour .. ":" .. os.date("*t").min .. "] " .. line
         newLine.Parent = Console
         newLine.Visible = true
         newLine.TextColor3 = color
@@ -169,6 +171,10 @@ function lib.new()
 
     function console:Success(line)
         console:Log(line, Color3.fromRGB(0, 255, 0))
+    end
+
+    function lib:SetBrand(brandName)
+        brand = brandName
     end
 
     return console
